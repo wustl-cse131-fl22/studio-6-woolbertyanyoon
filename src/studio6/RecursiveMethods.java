@@ -99,9 +99,21 @@ public class RecursiveMethods {
 	 * @param radiusMinimumDrawingThreshold radius above which drawing should occur
 	 */
 	public static void circlesUponCircles(double xCenter, double yCenter, double radius,
-			double radiusMinimumDrawingThreshold) {
+		double radiusMinimumDrawingThreshold) {
+		
+			if (radius < radiusMinimumDrawingThreshold) {
+				StdDraw.circle(xCenter, yCenter, radius);
+			}
+			
+			double yChange = radius/2;
+			double xChange = radius/2;
+			
+			circlesUponCircles(xCenter, yCenter + yChange, radius/3, radiusMinimumDrawingThreshold);
+			circlesUponCircles(xCenter, yCenter - yChange, radius/3, radiusMinimumDrawingThreshold);
+			circlesUponCircles(xCenter + xChange, yCenter, radius/3, radiusMinimumDrawingThreshold);
+			circlesUponCircles(xCenter - xChange, yCenter, radius/3, radiusMinimumDrawingThreshold);
 		
 		// FIXME
-	}
+		}
 
 }
